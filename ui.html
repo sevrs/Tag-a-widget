@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FigJam Tagger</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      overflow: hidden;
+    }
+    
+    #root {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script>
+    // Plugin communication bridge
+    window.pluginAPI = {
+      postMessage: (message) => {
+        parent.postMessage({ pluginMessage: message }, '*');
+      },
+      
+      onMessage: (callback) => {
+        window.onmessage = (event) => {
+          if (event.data.pluginMessage) {
+            callback(event.data.pluginMessage);
+          }
+        };
+      }
+    };
+    
+    // Initialize the plugin when ready
+    window.pluginAPI.postMessage({ type: 'get-initial-data' });
+  </script>
+  
+  <!-- Bundled React app -->
+  <script src="./dist/plugin-ui.js"></script>
+</body>
+</html>

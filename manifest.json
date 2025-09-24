@@ -1,0 +1,21 @@
+{
+  "name": "FigJam Tagger",
+  "id": "figjam-tagger",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figjam"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "ui": "ui.html",
+  "menu": [
+    {
+      "name": "Open Tagger",
+      "command": "open-tagger"
+    }
+  ],
+  "parameters": [],
+  "parameterOnly": false
+}
